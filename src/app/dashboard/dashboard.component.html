@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<app-container>
+    <app-breadcrumb [url]="['dashboard']"></app-breadcrumb>
+
+    <div class="mt-8 flex gap-x-4">
+        <app-info-card counts="142" category="Assets" icon="qr_code_scanner" href="/assets/hardware"></app-info-card>
+        <app-info-card counts="14" category="Licenses" icon="key" href="/assets/licenses"></app-info-card>
+        <app-info-card counts="5" category="Accessories" icon="keyboard" href="/assets/hardware"></app-info-card>
+    </div>
+</app-container>

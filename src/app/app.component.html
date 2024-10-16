@@ -1,3 +1,136 @@
-<h1>
-    <p>welcome</p>
-</h1>
+<mat-drawer-container class="h-screen">
+    <mat-drawer #drawer mode="side" class="w-full sm:w-72">
+        <div class="p-6 flex items-center justify-between gap-8 bg-[#ccc]">
+            <h1>LOGO</h1>
+            <div class="sm:hidden">
+                <mat-icon class="scale-150 cursor-pointer " (click)="drawer.toggle()">close</mat-icon>
+            </div>
+        </div>
+        <div class="bg-[#ccc]">
+            <ul class="cursor-pointer text-xl">
+                <li class="px-6 py-2">
+                    <a routerLink="/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <div class="px-6 py-2 flex items-center justify-between" (click)="showAsset = !showAsset">
+                        <span>Assets</span>
+                        <mat-icon [ngClass]="{'-rotate-90 duration-100' : showAsset}">chevron_left</mat-icon>
+                    </div>
+                    <ul class="px-6 text-lg bg-[#8a8a8a]" *ngIf="showAsset">
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" class="flex items-center justify-between gap-2">
+                                <span>List All</span>
+                                <mat-icon>devices</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" [queryParams]="{ status: 'operational-assets' }" class="flex items-center justify-between gap-2">
+                                <span>Operational Assets</span>
+                                <mat-icon>store</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" [queryParams]="{ status: 'commercial-assets' }" class="flex items-center justify-between gap-2">
+                                <span>Commercial Assets</span>
+                                <mat-icon>sell</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" [queryParams]="{ status: 'pending' }" class="flex items-center justify-between gap-2">
+                                <span>Pending</span>
+                                <mat-icon>pending</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" [queryParams]="{ status: 'release-due' }" class="flex items-center justify-between gap-2">
+                                <span>Due for Release</span>
+                                <mat-icon>event_busy</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" [queryParams]="{ status: 'return-due' }" class="flex items-center justify-between gap-2">
+                                <span>Due for Return</span>
+                                <mat-icon>event_busy</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/assets/hardware" [queryParams]="{ status: 'broken' }"  class="flex items-center justify-between gap-2">
+                                <span>Broken - Not Fixable</span>
+                                <mat-icon>broken_image</mat-icon>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="px-6 py-2">
+                    <a routerLink="/licenses">Licenses</a>
+                </li>
+                <li class="px-6 py-2">
+                    <a>Accessories</a>
+                </li>
+                <li>
+                    <div class="px-6 py-2 flex items-center justify-between">
+                        <span>Reports</span>
+                        <mat-icon>chevron_left</mat-icon>
+                    </div>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="px-6 py-2 flex items-center justify-between" (click)="showMaintenanceItem = !showMaintenanceItem">
+                        <span>Maintenance</span>
+                        <mat-icon [ngClass]="{'-rotate-90 duration-100' : showMaintenanceItem}">chevron_left</mat-icon>
+                    </div>
+                    <ul class="px-6 text-lg bg-[#8a8a8a]" *ngIf="showMaintenanceItem">
+                        <li class="py-1">
+                            <a routerLink="/maintenance/users" class="flex items-center justify-between gap-2">
+                                <span>Users</span>
+                                <mat-icon>person</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/maintenance/suppliers" class="flex items-center justify-between gap-2">
+                                <span>Suppliers</span>
+                                <mat-icon>handshake</mat-icon>
+                            </a>
+                        </li>
+                        <li class="py-1">
+                            <a routerLink="/maintenance/locations" class="flex items-center justify-between gap-2">
+                                <span>Locations</span>
+                                <mat-icon>location_on</mat-icon>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </mat-drawer>
+
+    <header>
+        <nav class="py-6 bg-[#ccc]">
+            <div class="container flex items-center justify-between">
+                <div class="flex items-center gap-8">
+                    <mat-icon class="scale-150 cursor-pointer" (click)="drawer.toggle()">menu</mat-icon>
+                    <h1>LOGO</h1>
+                </div>
+        
+                <div class="flex items-center gap-6">
+                    <!-- <mat-form-field>
+                        <input matInput type="search"   class="hidden">
+                        <button matSuffix mat-icon-button aria-label="Search">
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </mat-form-field> -->
+            
+                    <div class="profile">
+                        <span>Account</span>
+                        <mat-icon>person</mat-icon>
+                    </div>
+                
+                    <mat-icon>settings</mat-icon>
+                </div>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
+    </header>
+</mat-drawer-container>

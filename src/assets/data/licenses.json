@@ -1,0 +1,48 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "asset_name": "Laptop",
+            "product_key": "da91617b-c2c0-375b-b8b8-c2cf0d254109",
+            "expirataion_date": "Fri Sep 19, 2025",
+            "license_to_email": "augusta.blanda@example.net",
+            "license_to_name": "augusta.blanda@example.net",
+            "manufacturer": "Adobe",
+            "total": 11,
+            "is_checkout": false
+        },
+        {
+            "id": 2,
+            "asset_name": "Infinix",
+            "product_key": "da91617b-c2c0-375b-b8b8-c2cf0d254109",
+            "expirataion_date": "Fri Sep 19, 2025",
+            "license_to_email": "augusta.blanda@example.net",
+            "license_to_name": "augusta.blanda@example.net",
+            "manufacturer": "Microsoft",
+            "total": 10,
+            "is_checkout": false
+        },
+        {
+            "id": 3,
+            "asset_name": "POCO M4 Pro",
+            "product_key": "da91617b-c2c0-375b-b8b8-c2cf0d254109",
+            "expirataion_date": "Fri Sep 19, 2025",
+            "license_to_email": "augusta.blanda@example.net",
+            "license_to_name": "augusta.blanda@example.net",
+            "manufacturer": "Microsoft",
+            "total": 9,
+            "is_checkout": false
+        },
+        {
+            "id": 4,
+            "asset_name": "Macbook Pro 13",
+            "product_key": "da91617b-c2c0-375b-b8b8-c2cf0d254109",
+            "expirataion_date": "Fri Sep 19, 2025",
+            "license_to_email": "augusta.blanda@example.net",
+            "license_to_name": "augusta.blanda@example.net",
+            "manufacturer": "Microsoft",
+            "total": 10,
+            "is_checkout": false
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+<app-container>
+    <app-breadcrumb [url]="['assets', 'licenses']"></app-breadcrumb>
+
+    <div class="mt-4 border rounded-md p-4 items-center">
+        <div class="text-end">
+            <button mat-raised-button color="primary">Create New</button>
+        </div>
+
+        <mat-form-field class="mt-4 w-full">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Macbook" #input>
+        </mat-form-field>
+
+        <div class="overflow-auto">
+            <table mat-table [dataSource]="dataSource" class="asset-table overflow-auto w-full" matSort>
+                <ng-container matColumnDef="asset_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Asset Name</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.asset_name }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="product_key">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Key</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.product_key }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expirataion_date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiration Date</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.expirataion_date }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="license_to_email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>License to Email</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.license_to_email }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="license_to_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Licenses to Name</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.license_to_name }} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="manufacturer">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.manufacturer }} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="total">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.total }} </td>
+                </ng-container>
+
+                
+                <ng-container matColumnDef="is_checkout">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Checkin/Checkout</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.is_checkout }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex gap-2">
+                            <mat-icon class="cursor-pointer">edit</mat-icon>
+                            <mat-icon class="cursor-pointer">delete</mat-icon>
+                        </div>
+                    </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</app-container>

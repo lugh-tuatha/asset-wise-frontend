@@ -1,0 +1,128 @@
+<app-container>
+    <h1 class="font-thin text-2xl mt-2">View Asset {{ this.assetId }}</h1> 
+
+    <mat-tab-group class="mt-2">
+        <mat-tab label="Info">
+            <div class="sm:flex sm:flex-row-reverse gap-4 mt-4">
+                <div class="w-full sm:w-1/5">
+                    <img [src]="productDetail.product_image" class="aspect-square" alt="Product Image" *ngIf="productDetail; else showLoad">
+                    <button mat-raised-button color="primary" class="mt-2 w-full">Generate QR</button>
+                    <div class="hidden sm:block">
+                        <img [src]="'../../../../assets/asset-qr/' + assetId + '.png'" alt="" class="border-2 mt-8 w-40 mx-auto">
+                    </div>
+                </div>
+                <div class="w-full sm:w-4/5 text-sm">
+                    <ng-template #showLoad>
+                        <div>
+                            loading....
+                        </div>
+                    </ng-template>
+                    
+                    <ng-container *ngIf="productDetail; else showLoad">
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Asset Tag</div>
+                            <div class="w-3/5">{{ productDetail._id }}</div>
+                        </div>
+    
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Status</div>
+                            <div class="w-3/5">{{ productDetail.status }}</div>
+                        </div>
+    
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Serial Number</div>
+                            <div class="w-3/5">{{ productDetail.serial }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Category</div>
+                            <div class="w-3/5">{{ productDetail.category }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Model</div>
+                            <div class="w-3/5">{{ productDetail.model }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Location</div>
+                            <div class="w-3/5">{{ productDetail.location }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Purchase Date</div>
+                            <div class="w-3/5">{{ productDetail.purchase_date | date:'MMM d, y' }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Purchase Cost</div>
+                            <div class="w-3/5">₱ {{ productDetail.purchase_cost | number:'1.2-2' }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Order Number</div>
+                            <div class="w-3/5">{{ productDetail.order_number }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Supplier</div>
+                            <div class="w-3/5">{{ productDetail.supplier }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Fully Depricated</div>
+                            <div class="w-3/5">{{ productDetail.eol_date | date:'MMM d, y'  }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">EOL Rate</div>
+                            <div class="w-3/5">6 Years</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Created at</div>
+                            <div class="w-3/5">{{ productDetail.createdAt | date:'MMM d, y, h:mm a' }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Updated at</div>
+                            <div class="w-3/5">{{ productDetail.updatedAt | date:'MMM d, y, h:mm a' }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Requests</div>
+                            <div class="w-3/5">{{ productDetail.request_count }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Returns</div>
+                            <div class="w-3/5">{{ productDetail.return_count }}</div>
+                        </div>
+
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Releases</div>
+                            <div class="w-3/5">{{ productDetail.release_count }}</div>
+                        </div>
+                        
+                        <div class="flex items-center border-t py-2 px-4">
+                            <div class="font-bold w-2/5">Notes</div>
+                            <div class="w-3/5">{{ productDetail.notes }}</div>
+                        </div>  
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="History">
+            <div class="mt-2">
+                History
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Aditional Files">
+            <div class="mt-2">
+                Aditional Files
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</app-container> 

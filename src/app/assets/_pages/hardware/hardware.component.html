@@ -1,0 +1,94 @@
+<app-container>
+    <app-breadcrumb [url]="['assets', 'hardware']"></app-breadcrumb>
+
+    <div class="mt-4 border rounded-md p-4 items-center">
+        <div class="text-end">
+            <button mat-raised-button color="primary" (click)="createNewHardware()">Create New</button>
+        </div>
+
+
+        <mat-form-field class="mt-4 w-full">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Macbook" #input>
+        </mat-form-field>
+
+        <div class="overflow-auto">
+            <table mat-table [dataSource]="dataSource" class="asset-table overflow-auto w-full" matSort>
+                <ng-container matColumnDef="product_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+                    <td mat-cell *matCellDef="let element" [routerLink]="'/assets/hardware/' + element._id" class="cursor-pointer"> {{ element.product_name }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="product_image">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Device Image</th>
+                    <td mat-cell *matCellDef="let element">
+                        <img [src]="element.product_image" alt="Device Image" class="h-10 mx-auto">
+                    </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="serial">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Serial Number</th>
+                    <td mat-cell *matCellDef="let element" [routerLink]="'/assets/hardware/' + element._id" class="cursor-pointer"> {{ element.serial }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="model">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Model</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.model }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.category }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.status }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="account_person">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Account person</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.account_person }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="location">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Location/Hub</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.location }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="purchase_cost">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Purchase Cost</th>
+                    <td mat-cell *matCellDef="let element"> {{ element.purchase_cost }} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="is_checkout">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Request/Release</th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <div *ngIf="!element.requestable; else request">
+                            <button mat-raised-button color="primary">Release</button>
+                        </div>
+
+                        <ng-template #request>
+                            <button mat-flat-button>Request</button>
+                        </ng-template>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="flex gap-2">
+                            <mat-icon class="cursor-pointer">edit</mat-icon>
+                            <mat-icon class="cursor-pointer" (click)="deleteProduct(element._id)">delete</mat-icon>
+                        </div>
+                    </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</app-container>

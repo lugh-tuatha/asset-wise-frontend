@@ -1,0 +1,130 @@
+<main class="p-4 overflow-hidden  w-[50rem]">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl ">Create Assets</h1>
+        <button mat-raised-button color="primary">Back</button>
+    </div>
+
+    <form class="py-4 w-full" [formGroup]="hardwareForm" (ngSubmit)="saveHardwareEntry()">
+        <div class="flex gap-8">
+            <div class="w-1/2 flex flex-col gap-4">
+                <h2 class="-mb-2 text-blue-500">Product Related Information</h2>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput placeholder="Ex. Macbook 13 Pro" formControlName="product_name">
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Serial Number</mat-label>
+                    <input matInput placeholder="Ex. 31509776-3aee-374c-a138-7b4d76df1e70" formControlName="serial">
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Model</mat-label>
+                    <input matInput placeholder="Ex. Desktop" formControlName="model">
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                        <mat-option value="Solar">
+                            Accessories
+                        </mat-option>
+                        <mat-option value="Solar">
+                            Solar
+                        </mat-option>
+                        <mat-option value="Car">
+                            Car
+                        </mat-option>
+                        <mat-option value="Tablet">
+                            Tablet
+                        </mat-option>
+                        <mat-option value="Display">
+                            Display
+                        </mat-option>
+                        <mat-option value="Desktop">
+                            Desktop
+                        </mat-option>
+                        <mat-option value="Mobile">
+                            Mobile Phone
+                        </mat-option>
+                        <mat-option value="Printer">
+                            Printer
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option value="operational-assets">
+                            Fixed Assets
+                        </mat-option>
+                        <mat-option value="commercial-assets">
+                            Commercial Assets
+                        </mat-option>
+                        <mat-option value="Pending">
+                            Pending
+                        </mat-option>
+                        <mat-option value="broken">
+                            Broken - Not Fixable
+                        </mat-option>
+                        <mat-option value="disposal">
+                            Disposal
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Location/Hub</mat-label>
+                    <mat-select formControlName="location">
+                        <mat-option value="Makati Warehouse">
+                            Makati Warehouse
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Memo/Notes</mat-label>
+                    <input matInput formControlName="notes">
+                </mat-form-field>
+            </div>
+    
+            <div class="w-1/2 flex flex-col gap-4">
+                <h2 class="-mb-2 text-blue-500">Order Related Information</h2>
+                
+                <mat-form-field class="w-full">
+                    <mat-label>Order Number</mat-label>
+                    <input matInput placeholder="Optional" formControlName="order_number">
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Purchase Date</mat-label>
+                    <input placeholder="MM/DD/YYYY" matInput [matDatepicker]="purchaseDate" formControlName="purchase_date">
+                    <mat-datepicker-toggle matIconSuffix [for]="purchaseDate"></mat-datepicker-toggle>
+                    <mat-datepicker #purchaseDate></mat-datepicker>
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>EOL Date</mat-label>
+                    <input placeholder="MM/DD/YYYY" matInput [matDatepicker]="picker" formControlName="eol_date">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+        
+                <mat-form-field class="w-full">
+                    <mat-label>Purchase Cost</mat-label>
+                    <input matInput formControlName="purchase_cost">
+                    <mat-icon matSuffix>php</mat-icon>
+                </mat-form-field>
+                
+                <mat-form-field class="w-full">
+                    <mat-label>Supplier</mat-label>
+                    <input matInput formControlName="supplier">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <button class="mt-4" mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</main>

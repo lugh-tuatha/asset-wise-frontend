@@ -1,0 +1,16 @@
+<ol class="mt-8 font-thin text-xl flex gap-2">
+    <ng-container *ngIf="url.length == 2">
+        <li>
+            <a [href]="url[0]">{{ url[0] }}</a>
+            <span> / </span>
+        </li>
+
+        <li>
+            <span>{{ url[1] }}</span>
+        </li>
+    </ng-container>
+
+    <li *ngIf="url.length == 1">
+        <span>{{ url[0] }}</span>
+    </li>
+</ol>
